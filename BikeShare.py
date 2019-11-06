@@ -8,7 +8,7 @@ CITY_DATA = {'chicago': 'chicago.csv',
               'washington': 'washington.csv'}
 
 # Internal flag for printing addittional information
-debug_flag = True
+debug_flag = False
 
 def get_user_input(choice_list,data_name):
     """
