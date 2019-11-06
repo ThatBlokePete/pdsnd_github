@@ -2,7 +2,7 @@
 Created on the 06/11/2019
 
 ### BikeShare data Project
-Replace the Project Title
+The wonderful bikeshare data project from UDACITY
 
 ### Description
 The python script "bikeshare.py" was written 
