@@ -85,8 +85,16 @@ def load_data(city, month, day):
     if debug_flag:
             print(city_name)
 
-    print('getting data from: ', CITY_DATA[city_name])
-    df = pd.read_csv(CITY_DATA[city_name])
+    try:
+        print('getting data from: ', CITY_DATA[city_name])
+        df = pd.read_csv(CITY_DATA[city_name])
+    except OSError as e:
+        print("Error: cannot find the data files")
+        print("       Please make sure they are available in the root folder")
+        print("       and restart the program\n")
+    finally:
+        exit()
+
 
     try:
         # Build data frame columns:
