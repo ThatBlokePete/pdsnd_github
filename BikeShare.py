@@ -8,7 +8,7 @@ CITY_DATA = {'chicago': 'chicago.csv',
               'washington': 'washington.csv'}
 
 # Internal flag for printing addittional information
-debug_flag = True
+debug_flag = False
 
 def get_user_input(choice_list,data_name):
     """
@@ -85,8 +85,16 @@ def load_data(city, month, day):
     if debug_flag:
             print(city_name)
 
-    print('getting data from: ', CITY_DATA[city_name])
-    df = pd.read_csv(CITY_DATA[city_name])
+    try:
+        print('getting data from: ', CITY_DATA[city_name])
+        df = pd.read_csv(CITY_DATA[city_name])
+    except OSError as e:
+        print("Error: cannot find the data files")
+        print("       Please make sure they are available in the root folder")
+        print("       and restart the program\n")
+    finally:
+        exit()
+
 
     try:
         # Build data frame columns:
@@ -290,8 +298,9 @@ def main():
         user_stats(df)
         raw_data(df)
 
-        restart = input('\nWould you like to restart? Enter yes or no.\n')
-        if restart.lower() != 'yes':
+        print('\nwould you like to start from the beginning?')
+        restart = input('y or n\n')
+        if restart.lower() == 'n':
             break
 
 
